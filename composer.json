@@ -2,7 +2,7 @@
     "name": "project/loadingpage",
     "description": "Projeto atividade de aula Internet2",
     "type": "project",
-    "license": "mit",
+    "license": "MIT License",
     "autoload": {
         "psr-4": {
             "Project\\Loadingpage\\": "src/"
