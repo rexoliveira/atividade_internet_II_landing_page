@@ -1,0 +1,13 @@
+{
+    "name": "v2_projeto_um_aula/site",
+    "description": "Projeto de Aula teste",
+    "authors": [
+        {
+            "name": "Rodrigo Oliveira",
+            "email": "rex.oliveira.15@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.2"
+    }
+}
