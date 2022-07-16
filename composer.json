@@ -1,13 +1,19 @@
 {
-    "name": "v2_projeto_um_aula/site",
-    "description": "Projeto de Aula teste",
+    "name": "project/loadingpage",
+    "description": "Projeto atividade de aula Internet2",
+    "type": "project",
+    "license": "mit",
+    "autoload": {
+        "psr-4": {
+            "Project\\Loadingpage\\": "src/"
+        }
+    },
     "authors": [
         {
-            "name": "Rodrigo Oliveira",
-            "email": "rex.oliveira.15@gmail.com"
+            "name": "rexoliveira",
+            "email": "roolivei@yahoo.com.br"
         }
     ],
-    "require": {
-        "php": ">=7.2"
-    }
+    "minimum-stability": "stable",
+    "require": {}
 }
