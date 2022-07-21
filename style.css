@@ -228,7 +228,7 @@ article>h4 {
     padding: 0;
 }
 
-main>h5{
+ main>h5{
     font-weight: none;
     display: flex;
     color: greenyellow;
@@ -236,7 +236,6 @@ main>h5{
     font-size: 1em;
     padding: 0; 
 }
-
 
 label {
     align-items: center;

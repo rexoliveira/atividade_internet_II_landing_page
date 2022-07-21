@@ -5,7 +5,8 @@ namespace App;
 include_once("conexao.php");
 $filtro = isset($_GET['filtro']) ? $_GET['filtro'] : "";
 $where = isset($_GET['palavraFiltro']) ? $_GET['palavraFiltro'] : "";
-if (isset($_GET['palavraFiltro'])) {
+
+if ($filtro != "" && $where != "todos") {
     $sql = "SELECT * FROM cliente WHERE $where LIKE '%$filtro%' ORDER BY nome";
 } else {
     $sql = "SELECT * FROM cliente";
@@ -54,7 +55,7 @@ mysqli_close($conexao);
             <label id="label_filtro" for="filtro">Filtrar por</label>
 
             <select name="palavraFiltro" id="palavra">
-                <option value="">todos</option>
+                <option value="todos" selected>todos</option>
                 <option value="email">E-mail</option>
                 <option value="nome">Nome</option>
                 <option value="sobrenome">Sobrenome</option>
@@ -67,8 +68,20 @@ mysqli_close($conexao);
         </form>
 
         <?php
+
+        if ($where == 'email') {
+            $n_filtro = 'E-mail';
+        } elseif ($where == 'nome') {
+            $n_filtro = "Nome";
+        } elseif ($where == 'sobrenome') {
+            $n_filtro = "Sobrenome";
+        } elseif ($where == 'tel') {
+            $n_filtro = "Celular";
+        }
+
+
         if ($filtro != "") {
-            print_r("<h5>Resultado do filtro \"$where\" contendo \"$filtro\".</h5>");
+            print_r("<h5>Resultado do filtro  \"$n_filtro\" contendo  \"$filtro\".</h5>");
         }
         /* print "<h2>$registros resgistros encontrados.</h2>" */
         while ($exibirRegistro = mysqli_fetch_array($consulta)) {
