@@ -1,27 +1,30 @@
 <?php
 
+namespace App;
+
 include_once("conexao.php");
-
 $filtro = isset($_GET['filtro']) ? $_GET['filtro'] : "";
-$where = $_GET['palavraFiltro'] ? $_GET['palavraFiltro'] : "email";
-$sql = "SELECT * FROM cliente WHERE $where LIKE '%$filtro%' ORDER BY NOME";
-
+$where = isset($_GET['palavraFiltro']) ? $_GET['palavraFiltro'] : "";
+if (isset($_GET['palavraFiltro'])) {
+    $sql = "SELECT * FROM cliente WHERE $where LIKE '%$filtro%' ORDER BY nome";
+} else {
+    $sql = "SELECT * FROM cliente";
+};
 $consulta = mysqli_query($conexao, $sql);
 $registros = mysqli_num_rows($consulta);
-
-mysqli_close($conexao)
+mysqli_close($conexao);
 ?>
 
 
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt - BR">
 
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF - 8" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width = device - width, initial - scale = 1.0" />
 
-    <link rel="shortcut icon" href="image/favicon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="image / favicon . png" type="image / x - icon" />
     <link rel="stylesheet" href="style.css" />
 
     <script src="scripts/mascaras.js" async></script>
@@ -39,7 +42,7 @@ mysqli_close($conexao)
             </ul>
         </nav>
         <section>
-            <img src="image/favicon.png" alt="imagem-tecnologia" />
+            <img src="image/favicon.png" alt="imagem - tecnologia" />
             <h1>Consulta de Cliente</h1>
         </section>
     </header>
@@ -65,11 +68,10 @@ mysqli_close($conexao)
 
         <?php
         if ($filtro != "") {
-            print "<h5>Resultado do filtro \"$where\" contendo \"$filtro\". </h5>";
+            print_r("<h5>Resultado do filtro \"$where\" contendo \"$filtro\".</h5>");
         }
         /* print "<h2>$registros resgistros encontrados.</h2>" */
         while ($exibirRegistro = mysqli_fetch_array($consulta)) {
-
             $id = $exibirRegistro[0];
             $nome = $exibirRegistro[1];
             $sobrenome = $exibirRegistro[2];
@@ -79,16 +81,12 @@ mysqli_close($conexao)
             $tecn = ($exibirRegistro[6]) ? "Sim" : "Não";
             $meta = ($exibirRegistro[7]) ? "Sim" : "Não";
             $textarea = $exibirRegistro[8];
-
             print "<article>";
             print "<h4>Dados do Cliente </h4>";
             print "<h3>ID: $id - Nome: $nome $sobrenome</h3> ";
-
-
             print "<h3>E-mai: $email - Celular: $tel</h3>";
             print "<h4>Conteúdos preferidos </h4>";
             print "<h3>Mundo Nerd: $nerd - Tecnologias do Amanhã: $tecn - Metaverso: $meta</h3>";
-
             print "<h4>As linguagens que você se indentifica </h4>";
             print "<textarea
                     id='linguagem'
@@ -100,7 +98,6 @@ mysqli_close($conexao)
                     autocorrect='off' >";
             print "$textarea";
             print "</textarea>";
-
             print "</article>";
         }
 
