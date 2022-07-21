@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="image/favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="style.css" />
 
-    <script src="scripts/mascaras.js" async></script>
+    <script src="scripts/mascaras.js" defer></script>
 
     <title>Landing Page</title>
   </head>
